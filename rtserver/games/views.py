@@ -34,6 +34,6 @@ class GameViewSet(viewsets.ModelViewSet):
     def points(self, request, pk=None):
         data = request.data
         result_detail = GameResultDetail.objects.get(player=data['player'], result=data['result'])
-        result_detail.set_points(result_detail.get_points() + data['points'])
+        result_detail.points += data['points']
         result_detail.save()
         return Response({'succes': 'true'})

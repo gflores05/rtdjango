@@ -29,10 +29,14 @@ class GameResult(models.Model):
         return status[self.result]
 
     def __str__(self):
-        result = "Game {0}, winner: {1}, status: {2}"
-        return result.format(self.game.name, self.winner.name if self.winner != None else "nobody", self.str_status())
+        result = "{0} - Game {1}, winner: {2}, status: {3}"
+        return result.format(self.id, self.game.name, self.winner.name if self.winner != None else "nobody", self.str_status())
 
 class GameResultDetail(models.Model):
     result = models.ForeignKey(GameResult, on_delete=models.CASCADE)
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
     points = models.IntegerField(default=0)
+
+    def __str__(self):
+        detail = "{0} Game {1}, player: {2}, points: {3}"
+        return detail.format(self.result.id, self.result.game.name, self.player.name, self.points)
