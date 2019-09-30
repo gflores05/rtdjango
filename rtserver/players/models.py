@@ -7,3 +7,5 @@ class Player(models.Model):
     level = models.IntegerField(default=0)
     points = models.IntegerField(default=0)
     created = models.DateTimeField('Creation date')
+    def __str__(self):
+        return self.name

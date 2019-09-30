@@ -6,7 +6,7 @@ from players.models import Player
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Player
-        fields = ['name', 'nickname', 'level', 'points', 'created']
+        fields = ['name', 'nickname', 'level', 'points']
 
 class PlayerViewSet(viewsets.ModelViewSet):
     queryset = Player.objects.all()
