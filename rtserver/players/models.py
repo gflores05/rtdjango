@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 class Player(models.Model):
@@ -6,6 +7,6 @@ class Player(models.Model):
     nickname = models.CharField(max_length=50, unique=True)
     level = models.IntegerField(default=0)
     points = models.IntegerField(default=0)
-    created = models.DateTimeField('Creation date')
+    created = models.DateTimeField('Creation date', default=datetime.now())
     def __str__(self):
-        return self.name
+        return "{0} - {1}".format(self.id, self.name)
