@@ -16,5 +16,6 @@ python_version = "3.7"
 [scripts]
 migrate = "./rtserver/manage.py migrate"
 mig_games = "./rtserver/manage.py makemigrations games"
+mig_players = "./rtserver/manage.py makemigrations players"
 server = "./rtserver/manage.py runserver 0.0.0.0:8000"
 csu = "./rtserver/manage.py createsuperuser"

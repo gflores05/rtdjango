@@ -16,6 +16,7 @@ class GameResultSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = GameResult
         fields = ['id', 'start']
+
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
@@ -28,12 +29,15 @@ class GameViewSet(viewsets.ModelViewSet):
         for player_id in request.data['players']:
             player = Player.objects.get(pk=player_id)
             game_result.gameresultdetail_set.create(player=player)
+
         return Response(GameResultSerializer(game_result).data)
 
     @action(detail=True, methods=['post'])
     def points(self, request, pk=None):
         data = request.data
+
         result_detail = GameResultDetail.objects.get(player=data['player'], result=data['result'])
         result_detail.points += data['points']
         result_detail.save()
+
         return Response({'succes': 'true'})
