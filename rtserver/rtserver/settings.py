@@ -27,12 +27,24 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Channels
+ASGI_APPLICATION = 'rtserver.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'players.apps.PlayersConfig',
     'games.apps.GamesConfig',
+    'chat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
