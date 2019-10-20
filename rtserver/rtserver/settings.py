@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'channels',
     'players.apps.PlayersConfig',
     'games.apps.GamesConfig',
-    'chat',
+    'wsgames',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

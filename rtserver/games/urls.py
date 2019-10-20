@@ -16,11 +16,11 @@ game_start = GameViewSet.as_view({
     'post': 'start'
 })
 game_points = GameViewSet.as_view({
-    'put': 'points'
+    'put': 'movement'
 })
 urlpatterns = [
     path('games/', game_list, name='game-list'),
     path('games/<int:pk>/', game_detail, name='game-detail'),
     path('start/', game_start, name='game-start'),
-    path('points/', game_points, name='game-points')
+    path('movement/', game_points, name='game-movement')
 ]

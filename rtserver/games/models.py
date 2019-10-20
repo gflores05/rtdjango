@@ -23,6 +23,7 @@ class GameResult(models.Model):
     result = models.IntegerField(default=2)
     start = models.DateTimeField('Game start date', default=timezone.now())
     end = models.DateTimeField('Game end date', null=True, default=None, blank=True)
+    state = models.CharField()
 
     def str_status(self):
         status = ['resolved', 'tie', 'unfinished']

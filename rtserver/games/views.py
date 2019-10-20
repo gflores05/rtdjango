@@ -4,7 +4,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from players.models import Player
-from games.models import Game, GameResultDetail, GameResult
+from games.models import Game, GameResultDetail, GameResult, GameMovement
 
 # Create your views here.
 class GameSerializer(serializers.HyperlinkedModelSerializer):
@@ -33,11 +33,20 @@ class GameViewSet(viewsets.ModelViewSet):
         return Response(GameResultSerializer(game_result).data)
 
     @action(detail=True, methods=['post'])
-    def points(self, request, pk=None):
+    def movement(self, request, pk=None):
         data = request.data
 
-        result_detail = GameResultDetail.objects.get(player=data['player'], result=data['result'])
-        result_detail.points += data['points']
-        result_detail.save()
+        #Update player result detail
+        if(data['points'] > 0):
+            result_detail = GameResultDetail.objects.get(player=data['player'], result=data['result'])
+            result_detail.points += data['points']
+            result_detail.save()
+
+        #Save movement detail
+        movement = GameMovement()
+        movement.detail = result_detail.id
+        movement.points = data['points']
+        movement.movement = data['movement']
+        movement.save()
 
         return Response({'succes': 'true'})
