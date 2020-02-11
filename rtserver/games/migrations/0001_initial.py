@@ -10,38 +10,106 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('players', '0002_auto_20190930_1614'),
+        ("players", "0002_auto_20190930_1614"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Game',
+            name="Game",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('code', models.CharField(default='', max_length=15, unique=True)),
-                ('description', models.CharField(max_length=250)),
-                ('created', models.DateTimeField(default=datetime.datetime(2019, 9, 30, 16, 14, 52, 267842), verbose_name='Creation date')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
+                (
+                    "code",
+                    models.CharField(default="", max_length=15, unique=True),
+                ),
+                ("description", models.CharField(max_length=250)),
+                (
+                    "created",
+                    models.DateTimeField(
+                        default=datetime.datetime(
+                            2019, 9, 30, 16, 14, 52, 267842
+                        ),
+                        verbose_name="Creation date",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='GameResult',
+            name="GameResult",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('result', models.IntegerField(default=3)),
-                ('start', models.DateTimeField(default=datetime.datetime(2019, 9, 30, 16, 14, 52, 268876), verbose_name='Game start date')),
-                ('end', models.DateTimeField(verbose_name='Game end date')),
-                ('game', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='games.Game')),
-                ('winner', models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='players.Player')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("result", models.IntegerField(default=3)),
+                (
+                    "start",
+                    models.DateTimeField(
+                        default=datetime.datetime(
+                            2019, 9, 30, 16, 14, 52, 268876
+                        ),
+                        verbose_name="Game start date",
+                    ),
+                ),
+                ("end", models.DateTimeField(verbose_name="Game end date")),
+                (
+                    "game",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="games.Game",
+                    ),
+                ),
+                (
+                    "winner",
+                    models.ForeignKey(
+                        default=None,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="players.Player",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='GameResultDetail',
+            name="GameResultDetail",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('points', models.IntegerField(default=0)),
-                ('player', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='players.Player')),
-                ('result', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='games.GameResult')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("points", models.IntegerField(default=0)),
+                (
+                    "player",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="players.Player",
+                    ),
+                ),
+                (
+                    "result",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="games.GameResult",
+                    ),
+                ),
             ],
         ),
     ]

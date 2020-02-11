@@ -8,19 +8,34 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Player',
+            name="Player",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('nickname', models.CharField(max_length=50, unique=True)),
-                ('level', models.IntegerField(default=0)),
-                ('points', models.IntegerField(default=0)),
-                ('created', models.DateTimeField(default=datetime.datetime(2019, 9, 30, 16, 14, 46, 36847), verbose_name='Creation date')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("nickname", models.CharField(max_length=50, unique=True)),
+                ("level", models.IntegerField(default=0)),
+                ("points", models.IntegerField(default=0)),
+                (
+                    "created",
+                    models.DateTimeField(
+                        default=datetime.datetime(
+                            2019, 9, 30, 16, 14, 46, 36847
+                        ),
+                        verbose_name="Creation date",
+                    ),
+                ),
             ],
         ),
     ]

@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  cache:
+    image: redis:2.8
+    ports:
+      - 6379:6379
+  db:
+    image: postgres:11
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: rtdjango
+      POSTGRES_USER: rtdjango
+      POSTGRES_DB: rtdjango
+  server:
+    build: .
+    ports:
+      - 8000:8000
+    volumes:
+      - ./rtserver:/code/rtserver
+    env_file:
+      - .env
+    command: ./manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - cache
+      - db

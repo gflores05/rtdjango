@@ -7,13 +7,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('players', '0001_initial'),
+        ("players", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='player',
-            name='created',
-            field=models.DateTimeField(default=datetime.datetime(2019, 9, 30, 16, 14, 52, 216018), verbose_name='Creation date'),
+            model_name="player",
+            name="created",
+            field=models.DateTimeField(
+                default=datetime.datetime(2019, 9, 30, 16, 14, 52, 216018),
+                verbose_name="Creation date",
+            ),
         ),
     ]
