@@ -7,23 +7,31 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('games', '0008_auto_20190930_1749'),
+        ("games", "0008_auto_20190930_1749"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='game',
-            name='created',
-            field=models.DateTimeField(default=datetime.datetime(2019, 9, 30, 17, 56, 30, 614410), verbose_name='Creation date'),
+            model_name="game",
+            name="created",
+            field=models.DateTimeField(
+                default=datetime.datetime(2019, 9, 30, 17, 56, 30, 614410),
+                verbose_name="Creation date",
+            ),
         ),
         migrations.AlterField(
-            model_name='gameresult',
-            name='end',
-            field=models.DateTimeField(default=None, null=True, verbose_name='Game end date'),
+            model_name="gameresult",
+            name="end",
+            field=models.DateTimeField(
+                default=None, null=True, verbose_name="Game end date"
+            ),
         ),
         migrations.AlterField(
-            model_name='gameresult',
-            name='start',
-            field=models.DateTimeField(default=datetime.datetime(2019, 9, 30, 17, 56, 30, 615516), verbose_name='Game start date'),
+            model_name="gameresult",
+            name="start",
+            field=models.DateTimeField(
+                default=datetime.datetime(2019, 9, 30, 17, 56, 30, 615516),
+                verbose_name="Game start date",
+            ),
         ),
     ]

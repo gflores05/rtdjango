@@ -8,23 +8,34 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('games', '0001_initial'),
+        ("games", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='game',
-            name='created',
-            field=models.DateTimeField(default=datetime.datetime(2019, 9, 30, 17, 43, 58, 113188), verbose_name='Creation date'),
+            model_name="game",
+            name="created",
+            field=models.DateTimeField(
+                default=datetime.datetime(2019, 9, 30, 17, 43, 58, 113188),
+                verbose_name="Creation date",
+            ),
         ),
         migrations.AlterField(
-            model_name='gameresult',
-            name='start',
-            field=models.DateTimeField(default=datetime.datetime(2019, 9, 30, 17, 43, 58, 114192), verbose_name='Game start date'),
+            model_name="gameresult",
+            name="start",
+            field=models.DateTimeField(
+                default=datetime.datetime(2019, 9, 30, 17, 43, 58, 114192),
+                verbose_name="Game start date",
+            ),
         ),
         migrations.AlterField(
-            model_name='gameresult',
-            name='winner',
-            field=models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.CASCADE, to='players.Player'),
+            model_name="gameresult",
+            name="winner",
+            field=models.ForeignKey(
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="players.Player",
+            ),
         ),
     ]
