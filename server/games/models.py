@@ -7,7 +7,7 @@ class Game(models.Model):
     name = models.CharField(max_length=50)
     code = models.CharField(max_length=15, default="", unique=True)
     description = models.CharField(max_length=250)
-    created = models.DateTimeField("Creation date", default=timezone.now())
+    created = models.DateTimeField("Creation date", default=timezone.now)
 
     def __str__(self):
         return self.name
@@ -25,7 +25,7 @@ class GameResult(models.Model):
     2 - Unfinished
     """
     result = models.IntegerField(default=2)
-    start = models.DateTimeField("Game start date", default=timezone.now())
+    start = models.DateTimeField("Game start date", default=timezone.now)
     end = models.DateTimeField(
         "Game end date", null=True, default=None, blank=True
     )
