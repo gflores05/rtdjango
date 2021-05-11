@@ -47,10 +47,10 @@ class GameViewSet(viewsets.ModelViewSet):
             result_detail.save()
 
         # Save movement detail
-        movement = GameMovement()
-        movement.detail = result_detail.id
-        movement.points = data["points"]
-        movement.movement = data["movement"]
-        movement.save()
+        # movement = GameMovement()
+        # movement.detail = result_detail.id
+        # movement.points = data["points"]
+        # movement.movement = data["movement"]
+        # movement.save()
 
         return Response({"succes": "true"})

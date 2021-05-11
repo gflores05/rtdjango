@@ -32,7 +32,9 @@ ASGI_APPLICATION = "rtserver.routing.application"
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {"hosts": [("cache", 6379)],},
+        "CONFIG": {
+            "hosts": [("cache", 6379)],
+        },
     },
 }
 
@@ -90,10 +92,10 @@ WSGI_APPLICATION = "rtserver.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("POSTGRES_DB", "rtdjango"),
-        "USER": os.environ.get("POSTGRES_USER", "rtdjango"),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "rtdjango"),
-        "HOST": os.environ.get("POSTGRES_HOST", "db"),
+        "NAME": os.environ.get("RT_DB", "rtdjango"),
+        "USER": os.environ.get("RT_USER", "rtdjango"),
+        "PASSWORD": os.environ.get("RT_PASSWORD", "rtdjango"),
+        "HOST": os.environ.get("RT_HOST", "localhost"),
         "PORT": "5432",
     }
 }
@@ -104,14 +106,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",  # noqa
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",  # noqa
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",  # noqa
     },
 ]
 

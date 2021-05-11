@@ -1,6 +1,12 @@
 {
-    "python.pythonPath": "C:\\Python\\38\\python.exe",
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true
+  "python.pythonPath": "/home/gflores/.virtualenvs/quickforms/bin/python",
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "python.autoComplete.extraPaths": [
+    "./server"
+  ],
+  "python.analysis.extraPaths": [
+    "./server"
+  ]
 }

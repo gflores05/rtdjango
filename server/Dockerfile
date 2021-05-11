@@ -1,6 +1,6 @@
-FROM python:3.8.1
+FROM python:3.9.2
 
-WORKDIR /code/rtserver
+WORKDIR /code/server
 
 RUN pip install -U pip && \
     pip install poetry
