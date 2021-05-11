@@ -1,13 +1,20 @@
 from django.db import models
-from django.utils import timezone
+from django.utils.translation import ugettext as _
 
-# Create your models here.
-class Player(models.Model):
-    name = models.CharField(max_length=100)
-    nickname = models.CharField(max_length=50, unique=True)
-    level = models.IntegerField(default=0)
-    points = models.IntegerField(default=0)
-    created = models.DateTimeField("Creation date", default=timezone.now)
+from model_utils.models import TimeStampedModel
+
+
+class Player(TimeStampedModel):
+    name = models.CharField(max_length=100, verbose_name=_("Name"))
+    nickname = models.CharField(
+        max_length=50, unique=True, verbose_name=_("Nickname")
+    )
+    level = models.IntegerField(default=0, verbose_name=_("Level"))
+    points = models.IntegerField(default=0, verbose_name=_("Points"))
+
+    class Meta:
+        verbose_name = _("Player")
+        verbose_name_plural = _("Players")
 
     def __str__(self):
-        return "{0} - {1}".format(self.id, self.name)
+        return f"{self.id} - {self.name}({self.nickname})"
